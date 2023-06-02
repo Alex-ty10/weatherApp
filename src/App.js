@@ -22,11 +22,11 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    /* if(searchTerm.length > 0){ */
+    if(searchTerm.length > 0){
       getWeather(searchTerm)
-   /*  }
-    alert("Enter location!!😬😬") */
-    console.log(searchTerm)
+    }else{
+      alert("Te estas portando mal seras castigada!!😬😬")
+    }
   }
 
   const getWeather = async (location) => {
@@ -62,7 +62,7 @@ function App() {
         <div className="form-container">
           <div className="flex items-center justify-center">
             <h3 className="my-auto mr-auto text-xl text-pink-800 font-bold shadow-md py-1 px-3 
-            rounded-md bg-white bg-opacity-30">SkyCast ❤</h3>
+            rounded-md bg-white bg-opacity-50">SkyCast ❤</h3>
             <div className="flex p-2 text-gray-100 bg-gray-600 bg-opacity-30 rounded-lg">
             <i className="fa fa-map my-auto" aria-hidden="true"></i>
               <div className="text-right">
