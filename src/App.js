@@ -34,8 +34,8 @@ function App() {
     let how_to_search = (typeof location === 'string') ? `q=${location}` : `lat=${location[0]}&lon=${location[1]}`
 
     try {
-      let res = await fetch(`${process.env.REACT_APP_URL+how_to_search}
-      &appid=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`)
+      const url = `${process.env.REACT_APP_URL+how_to_search}&appid=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`
+      let res = await fetch(url)
       let data = await res.json()
       if(data.cod != 200) {
         setNoData('Location Not Found')
