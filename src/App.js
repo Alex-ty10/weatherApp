@@ -20,6 +20,11 @@ function App() {
     setSearchTerm(value)
   }
 
+  const clearData = () => {
+    setSearchTerm('')
+    setWeatherData([])
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     if(searchTerm.length > 0){
@@ -57,7 +62,7 @@ function App() {
 
   return (
     <div className="bg-gray-800 flex items-center justify-center w-screen h-screen py-10">
-      <div className="flex w-3/4 min-h-full rounded-3xl shadow-lg m-auto bg-gray-100">
+      <div className="flex w-3/4 min-h-full max-h-full rounded-3xl shadow-lg m-auto bg-gray-100">
           {/* form card section  */}
         <div className="form-container">
           <div className="flex items-center justify-center">
@@ -90,8 +95,8 @@ function App() {
           </div>
         </div>
         {/* info card section  */}
-        <div className="w-2/4 p-5">
-          <Header />
+        <div className="w-2/4 px-5 py-4">
+          <Header clearData={clearData}/>
           <div className="flex flex-col my-5">
             {/* card jsx  */}
             {weatherData.length === 0 ? 
