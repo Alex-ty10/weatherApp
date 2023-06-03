@@ -81,7 +81,7 @@ function App() {
             <form noValidate onSubmit={e => handleSubmit(e)} className="flex justify-center w-full">
               <input type="text" 
                 placeholder="Enter location" 
-                className="focus:outline outline-1 outline-gray-300 focus:bg-slate-700 focus:bg-opacity-40 focus:placeholder-gray-50 relative rounded-xl py-2 px-3 w-2/3 bg-gray-300 bg-opacity-60 text-white placeholder-gray-200"
+                className="focus:outline outline-1 outline-gray-300 focus:bg-slate-700 focus:bg-opacity-40 focus:placeholder-gray-50 relative rounded-xl py-2 px-3 w-2/3 bg-gray-300 bg-opacity-40 text-white placeholder-gray-200"
                 value={searchTerm}
                 onChange={handleChange} 
                 required />
