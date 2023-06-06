@@ -31,9 +31,11 @@ function App() {
     e.preventDefault();
     if (searchTerm.length > 0) {
       getWeather(searchTerm);
-      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 300);
     } else {
-      alert("¡Te estás portando mal serás castigada! 😬😬");
+      alert("Enter location! 😬😬");
     }
   };
 
