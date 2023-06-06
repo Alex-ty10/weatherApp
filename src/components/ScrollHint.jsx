@@ -25,7 +25,7 @@ function ScrollHint() {
   };
 
   return (
-    <div className={`fixed bottom-0 left-0 right-0 flex justify-center items-center bg-gray-900 text-white py-2 animate-bounce ${isVisible ? '' : 'hidden'} md:hidden`} onClick={handleScrollClick}>
+    <div className={`fixed bottom-0 left-0 right-0 flex justify-center items-center bg-gray-900 text-white py-2 animate-bounce ${isVisible ? '' : 'hidden'} lg:hidden`} onClick={handleScrollClick}>
       <svg className="animate-pulse w-6 h-6 mr-2 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
       </svg>
