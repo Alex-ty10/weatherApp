@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function ScrollHint() {
+function ScrollHint({ scrollRef }) {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function ScrollHint() {
   }, []);
 
   const handleScrollClick = () => {
-    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+    scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -35,4 +35,5 @@ function ScrollHint() {
 }
 
 export default ScrollHint;
+
 

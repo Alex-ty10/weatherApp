@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Header from './components/Header'
 import DetailCard from './components/DetailCard'
 import SummaryCard from './components/SummaryCard'
@@ -14,6 +14,7 @@ function App() {
   const [weatherData, setWeatherData] = useState([])
   const [city, setCity] = useState('Unkown location')
   const [weatherIcon, setWeatherIcon] = useState(`${process.env.REACT_APP_ICON_URL}10n@2x.png`)
+  const scrollRef = useRef();
 
   const handleChange = input => {
     
@@ -27,13 +28,16 @@ function App() {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    if(searchTerm.length > 0){
-      getWeather(searchTerm)
-    }else{
-      alert("Te estas portando mal seras castigada!!😬😬")
+    e.preventDefault();
+    if (searchTerm.length > 0) {
+      getWeather(searchTerm);
+      if (scrollRef.current) {
+        scrollRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      alert("¡Te estás portando mal serás castigada! 😬😬");
     }
-  }
+  };
 
   const getWeather = async (location) => {
     setWeatherData([])
@@ -95,14 +99,14 @@ function App() {
               }}></i>
             </form>
           </div>
-          {weatherData.length === 0 ? null : <ScrollHint/>}
+          {weatherData.length === 0 ? null : <ScrollHint scrollRef={scrollRef} />}
         </div>
         {/* info card section  */}
         {weatherData.length === 0 ?
          <div className="container p-4 hidden items-center justify-center h-1/3 mb-auto w-2/4 lg:flex">
            <h1 className="text-gray-300 text-4xl font-bold uppercase">{noData}</h1>
          </div> 
-        : <div className='w-screen px-5 py-4 lg:w-2/4'>
+        : <div className='w-screen px-5 py-4 lg:w-2/4' ref={scrollRef}>
           <Header clearData={clearData}/>
           <div className="flex flex-col my-5">
             {/* card jsx  */}
