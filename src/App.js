@@ -65,6 +65,10 @@ function App() {
     const {latitude, longitude} = location.coords
     console.log(latitude, longitude)
     getWeather([latitude, longitude])
+    inputRef.current.blur(); 
+      setTimeout(() => {
+        scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 300);
   }
 
   return (
