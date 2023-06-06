@@ -15,6 +15,7 @@ function App() {
   const [city, setCity] = useState('Unkown location')
   const [weatherIcon, setWeatherIcon] = useState(`${process.env.REACT_APP_ICON_URL}10n@2x.png`)
   const scrollRef = useRef();
+  const inputRef = useRef();
 
   const handleChange = input => {
     
@@ -31,6 +32,7 @@ function App() {
     e.preventDefault();
     if (searchTerm.length > 0) {
       getWeather(searchTerm);
+      inputRef.current.blur(); 
       setTimeout(() => {
         scrollRef.current?.scrollIntoView({ behavior: "smooth" });
       }, 300);
@@ -89,6 +91,7 @@ function App() {
                 className="focus:outline outline-1 outline-gray-300 focus:bg-slate-700 focus:bg-opacity-40 focus:placeholder-gray-50 relative rounded-xl py-2 px-3 w-2/3 bg-gray-300 bg-opacity-40 text-white placeholder-gray-200"
                 value={searchTerm}
                 onChange={handleChange} 
+                ref={inputRef}
                 required />
                 <button type="submit" className="z-10">
                   <i className="fa fa-search text-white -ml-10 border-l my-auto z-10 cursor-pointer p-3" 
