@@ -31,9 +31,7 @@ function App() {
     e.preventDefault();
     if (searchTerm.length > 0) {
       getWeather(searchTerm);
-      if (scrollRef.current) {
-        scrollRef.current.scrollIntoView({ behavior: "smooth" });
-      }
+      scrollRef.current.scrollIntoView({ behavior: "smooth" });
     } else {
       alert("¡Te estás portando mal serás castigada! 😬😬");
     }
@@ -106,9 +104,9 @@ function App() {
          <div className="container p-4 hidden items-center justify-center h-1/3 mb-auto w-2/4 lg:flex">
            <h1 className="text-gray-300 text-4xl font-bold uppercase">{noData}</h1>
          </div> 
-        : <div className='w-screen px-5 py-4 lg:w-2/4' ref={scrollRef}>
+        : <div className='w-screen px-5 py-4 lg:w-2/4' >
           <Header clearData={clearData}/>
-          <div className="flex flex-col my-5">
+          <div className="flex flex-col my-5" ref={scrollRef}>
             {/* card jsx  */}
                 <h1 className="text-4xl text-gray-800 mt-auto mb-3">Today</h1>
                 <DetailCard weather_icon={weatherIcon} data={weatherData} />
