@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Header from './components/Header'
 import DetailCard from './components/DetailCard'
 import SummaryCard from './components/SummaryCard'
+import ScrollHint from './components/ScrollHint'
 
 
 function App() {
@@ -61,14 +62,14 @@ function App() {
   }
 
   return (
-    <div className="bg-gray-800 flex items-center justify-center w-screen h-screen py-10">
-      <div className="flex w-3/4 min-h-full max-h-full rounded-3xl shadow-lg m-auto bg-gray-100">
+    <div className="bg-gray-800 flex items-center justify-center w-screen h-screen lg:p-10">
+      <div className="flex flex-col w-full h-full bg-gray-100 md:flex-row lg:w-11/12 md:min-h-full md:rounded-3xl md:shadow-md md:overflow-hidden">
           {/* form card section  */}
         <div className="form-container">
           <div className="flex items-center justify-center">
             <h3 className="my-auto mr-auto text-xl text-pink-800 font-bold shadow-md py-1 px-3 
             rounded-md bg-white bg-opacity-50">SkyCast ❤</h3>
-            <div className="flex p-2 text-gray-100 bg-gray-600 bg-opacity-30 rounded-lg">
+            <div className="flex p-2 text-gray-100 bg-gray-600 bg-opacity-30 rounded-md">
             <i className="fa fa-map my-auto" aria-hidden="true"></i>
               <div className="text-right">
                 <p className="font-semibold text-sm ml-2">{city}</p>
@@ -94,17 +95,17 @@ function App() {
               }}></i>
             </form>
           </div>
+          {weatherData.length === 0 ? null : <ScrollHint/>}
         </div>
         {/* info card section  */}
-        <div className="w-2/4 px-5 py-4">
+        {weatherData.length === 0 ?
+         <div className="container p-4 hidden items-center justify-center h-1/3 mb-auto w-3/5 md:flex">
+           <h1 className="text-gray-300 text-4xl font-bold uppercase">{noData}</h1>
+         </div> 
+        : <div className='w-screen px-5 py-4 md:w-3/5'>
           <Header clearData={clearData}/>
           <div className="flex flex-col my-5">
             {/* card jsx  */}
-            {weatherData.length === 0 ? 
-              <div className="container p-4 flex items-center justify-center h-1/3 mb-auto">
-                <h1 className="text-gray-300 text-4xl font-bold uppercase">{noData}</h1>
-              </div> :
-              <>
                 <h1 className="text-4xl text-gray-800 mt-auto mb-3">Today</h1>
                 <DetailCard weather_icon={weatherIcon} data={weatherData} />
                 <h1 className="text-2xl text-gray-600 mb-3 mt-5">More On {city}</h1>
@@ -117,10 +118,8 @@ function App() {
                   }
                   })}
                 </ul>
-              </>
-            }
           </div>
-        </div>
+        </div>}
       </div>
     </div>
   );

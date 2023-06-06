@@ -14,9 +14,10 @@ h1 {
 }
 .form-container {
   background: url('./assets/mountain-background.jpg') no-repeat 50% 40% / cover;
-  height: auto;
-  @apply w-2/4 p-5 rounded-3xl
+  overflow: hidden;
+  @apply w-full min-h-screen p-5 md:w-2/4 ;
 }
+
 
 .alert-notice::after {
   content:'';
